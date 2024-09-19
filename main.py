@@ -1,5 +1,6 @@
 import time
 import sys
+import variables
 
 def mostrar_menu():
     print("\n--- Bienvenido a Corona de Hielo---")
@@ -9,8 +10,7 @@ def mostrar_menu():
     print("3. Historia")
     print("4. Salir")
 
-
-def escribir_poco_a_poco(texto = "hola como estas", retraso=0.1):
+def escribir_poco_a_poco(texto = variables.msg , retraso=0.1):
     for letra in texto:
         sys.stdout.write(letra)
         sys.stdout.flush()  # Asegura que se imprima el carácter inmediatamente
