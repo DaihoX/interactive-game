@@ -38,8 +38,8 @@ class main():
             elif opcion2 == "3":
                 print("Cargando partida")
         elif opcion == "3":
-            # Por terminar, idea generar una cadena texto que se imprima poco a poco con al rededor de 0.1 segundos entre caracter para dar un estilo visual mas limpio
-            # Iniciar historia y volver al menu
+            # Por terminar, idea generar una cadena texto que se imprima poco a poco con al rededor de 0.1 segundos
+            # entre caracter para dar un estilo visual mas limpio Iniciar historia y volver al menu
             escribir_poco_a_poco()
 
         elif opcion == "4":
@@ -49,6 +49,3 @@ class main():
 
         else:
             print("Opción no válida. Inténtelo de nuevo.")
-
-
-mostrar_menu()

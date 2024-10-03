@@ -1,10 +1,12 @@
 from Mapa import Mapa
 from Acertijos import Acertijos
 
+
 class IniciarJuego:
     def __init__(self):
         self.mapa = Mapa()
-        self.Acertijos = Acertijos()
+        self.Acertijos = Acertijos(self.mapa)
+
     def iniciar(self):
         print("Bienvenido a la aventura de habitaciones 3x3!")
         while True:
@@ -21,5 +23,3 @@ class IniciarJuego:
                 break
             else:
                 print("Acción no válida")
-
-
