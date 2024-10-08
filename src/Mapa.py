@@ -1,5 +1,5 @@
+import pickle  # Importar pickle para la serialización
 from Habitacion import Habitacion
-
 class Mapa:
     def __init__(self):
         # Crear un mapa 3x3 de habitaciones
@@ -46,3 +46,18 @@ class Mapa:
         fila, columna = self.posicion_actual
         self.habitaciones[fila][columna].resolver()
         print(f"Habitación en ({fila}, {columna}) resuelta")
+
+    def guardar(self):
+        """Método para guardar el estado del mapa en un archivo."""
+        with open('mapa_guardado.pkl', 'wb') as f:
+            pickle.dump(self, f)  # Serializa la instancia de Mapa
+
+    @staticmethod
+    def cargar():
+        """Método para cargar el estado del mapa desde un archivo."""
+        try:
+            with open('mapa_guardado.pkl', 'rb') as f:
+                return pickle.load(f)  # Deserializa la instancia de Mapa
+        except (FileNotFoundError, EOFError):
+            print("No hay un archivo de mapa guardado.")
+            return None
