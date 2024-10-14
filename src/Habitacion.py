@@ -3,4 +3,7 @@ class Habitacion:
         self.resuelto = False
 
     def resolver(self):
-        self.resuelto = True
+        if self.resuelto:
+            print("¡Habitación ya resuelta! Ve a otra.")
+        else:
+            self.resuelto = True

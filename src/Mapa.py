@@ -47,17 +47,30 @@ class Mapa:
         self.habitaciones[fila][columna].resolver()
         print(f"Habitación en ({fila}, {columna}) resuelta")
 
+        # Verificar si todas las habitaciones están resueltas
+        if self.todas_habitaciones_resueltas():
+            print("¡Felicidades! Has completado todos los acertijos. La aventura ha finalizado.")
+            return True  # Retorna True si todas las habitaciones están resueltas
+        return False  # Retorna False si aún hay habitaciones no resuelta
+    
     def guardar(self):
-        """Método para guardar el estado del mapa en un archivo."""
+        #Método para guardar el estado del mapa en un archivo.
         with open('mapa_guardado.pkl', 'wb') as f:
             pickle.dump(self, f)  # Serializa la instancia de Mapa
 
     @staticmethod
     def cargar():
-        """Método para cargar el estado del mapa desde un archivo."""
+        #Método para cargar el estado del mapa desde un archivo.
         try:
             with open('mapa_guardado.pkl', 'rb') as f:
                 return pickle.load(f)  # Deserializa la instancia de Mapa
         except (FileNotFoundError, EOFError):
             print("No hay un archivo de mapa guardado.")
             return None
+
+    def todas_habitaciones_resueltas(self):
+        for fila in self.habitaciones:
+            for habitacion in fila:
+                if not habitacion.resuelto:
+                    return False
+        return True

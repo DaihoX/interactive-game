@@ -20,10 +20,11 @@ class IniciarJuego:
                 direccion = input("¿En qué dirección? (arriba/abajo/izquierda/derecha): ").lower()
                 self.mapa.mover(direccion)
             elif accion == "resolver":
-                self.Acertijos.iniciar_pregunta()
+                if self.Acertijos.iniciar_pregunta():
+                    break
             elif accion == "salir":
                 print("¡Gracias por jugar!")
-                break
+                break  # Salir del ciclo si se completaron todos los acertijos
             elif accion == "guardar partida":
                 # Guardar la partida en uno de los slots
                 slot = input("Seleccione un slot para guardar la partida (1, 2 o 3): ")
