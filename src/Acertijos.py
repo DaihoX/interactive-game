@@ -1,3 +1,6 @@
+import IniciarJuego
+
+
 class Acertijos:
     def __init__(self, mapa):
         self.Mapa = mapa
@@ -49,7 +52,15 @@ class Acertijos:
         pregunta = self.mostrar_pregunta(fila, columna)
         respuesta_correcta = respuestas.get(pregunta)
         if respuesta_usuario.lower() == respuesta_correcta.lower():
-            print("¡Respuesta correcta!")
+            print("¡Respuesta correcta! Has ganado 5 puntos de vida, 2 de ataque y 2 de defensa.")
+
+            IniciarJuego.IniciarJuego.jugador.vida += 2
+            IniciarJuego.IniciarJuego.jugador.fuerza += 2
+            IniciarJuego.IniciarJuego.jugador.defensa += 2
+
+            print(" Vida: " + str(IniciarJuego.IniciarJuego.jugador.vida) +
+                  " Fuerza: " + str(IniciarJuego.IniciarJuego.jugador.fuerza) +
+                  " Defensa: " + str(IniciarJuego.IniciarJuego.jugador.defensa))
             return True
         else:
             print("Respuesta incorrecta. Inténtalo de nuevo.")

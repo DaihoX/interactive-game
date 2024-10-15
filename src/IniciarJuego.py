@@ -1,12 +1,18 @@
-from Mapa import Mapa
+import Mapa
 from Acertijos import Acertijos
 from Partida import Partida
+from Personaje import Personaje
+from combate import combate
 
 
 class IniciarJuego:
+
+    jefeFinal = Personaje("Jefe Final", 10, 10, 10, 100)
+    jugador = Personaje("Jugador", 5, 5, 5, 50)
+
     def __init__(self, mapa=None):
         if mapa is None:
-            self.mapa = Mapa()  # Si no hay un mapa cargado, se crea uno nuevo
+            self.mapa = Mapa.Mapa()  # Si no hay un mapa cargado, se crea uno nuevo
         else:
             self.mapa = mapa  # Usamos el mapa cargado si está disponible
         self.Acertijos = Acertijos(self.mapa)
@@ -15,7 +21,7 @@ class IniciarJuego:
         print("¡Bienvenido a la aventura de habitaciones 3x3!")
         while True:
             self.mapa.mostrar_mapa()
-            accion = input("¿Qué quieres hacer? (mover/resolver/salir/guardar partida): ").lower()
+            accion = input("¿Qué quieres hacer? (mover/resolver/pelear contra el jefe/salir/guardar partida): ").lower()
 
             if accion == "mover":
                 direccion = input("¿En qué dirección? (arriba/abajo/izquierda/derecha): ").lower()
@@ -36,5 +42,8 @@ class IniciarJuego:
                     print(f"Partida guardada en el slot {slot}")
                 else:
                     print("Slot no válido. No se guardó la partida.")
+            elif accion == "pelear contra el jefe":
+                combate(IniciarJuego.jugador, IniciarJuego.jefeFinal)
+                break
             else:
                 print("Acción no válida")

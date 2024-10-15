@@ -1,4 +1,4 @@
-from src.Personaje import Personaje
+import sys
 
 
 def combate(jugador, jefeFinal):
@@ -13,14 +13,13 @@ def combate(jugador, jefeFinal):
         turno = turno + 1
     if jugador.esta_vivo():
         print("\nHa ganado", jugador.nombre)
+        print("¡¡Felicidades!!, has completado Corona de Hierro"
+              "Muchas gracias por jugar esta aventura de puzzles interactiva.")
+        sys.exit()
     elif jefeFinal.esta_vivo():
         print("\nHa ganado", jefeFinal.nombre)
+        print("Has perdido en la aventura, ¡Resuelve a las habitaciones para equiparte y vencer al jefe final!")
     else:
         print("\nEmpate")
 
-
-jefeFinal = Personaje("Jefe Final", 10, 10, 10, 100)
-jugador = Personaje("Jugador", 5, 5, 5, 50)
-
-combate(jugador, jefeFinal)
 

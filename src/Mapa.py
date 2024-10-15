@@ -1,5 +1,9 @@
 import pickle  # Importar pickle para la serialización
 from Habitacion import Habitacion
+from combate import combate
+from IniciarJuego import IniciarJuego
+
+
 class Mapa:
     def __init__(self):
         # Crear un mapa 3x3 de habitaciones
@@ -50,9 +54,12 @@ class Mapa:
         # Verificar si todas las habitaciones están resueltas
         if self.todas_habitaciones_resueltas():
             print("¡Felicidades! Has completado todos los acertijos. La aventura ha finalizado.")
+            print("Ahora puedes combatir el jefe final")
+
+            combate(IniciarJuego.jugador, IniciarJuego.jefeFinal)  # Iniciar combate contra el jefe final
             return True  # Retorna True si todas las habitaciones están resueltas
         return False  # Retorna False si aún hay habitaciones no resuelta
-    
+
     def guardar(self):
         #Método para guardar el estado del mapa en un archivo.
         with open('mapa_guardado.pkl', 'wb') as f:
