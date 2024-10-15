@@ -1,8 +1,9 @@
-import time
 import sys
+import webbrowser
 from Partida import Partida
-from Mapa import Mapa  
+from Mapa import Mapa
 from IniciarJuego import IniciarJuego
+
 
 def mostrar_menu():
     print("\n--- Bienvenido a Corona de Hielo---")
@@ -12,23 +13,19 @@ def mostrar_menu():
     print("3. Historia")
     print("4. Salir")
 
-def escribir_poco_a_poco(texto="hola como estas", retraso=0.1):
-    for letra in texto:
-        sys.stdout.write(letra)
-        sys.stdout.flush()  # Asegura que se imprima el carácter inmediatamente
-        time.sleep(retraso)  # Tiempo de retraso entre cada carácter
-    print()  # Añade un salto de línea al final
 
 def iniciar_juego_desde_mapa(mapa):
     # Función para iniciar el juego con una instancia de mapa ya existente.
     print("Iniciando juego desde un mapa cargado...")
     juego = IniciarJuego()  # Crea una nueva instancia del juego
-    juego.mapa = mapa        # Usa el mapa cargado en vez de uno nuevo
+    juego.mapa = mapa  # Usa el mapa cargado en vez de uno nuevo
     juego.Acertijos.mapa = mapa  # Asegurarse de que el objeto acertijos también tenga el mapa actualizado
-    juego.iniciar()          # Inicia el flujo del juego directamente
+    juego.iniciar()  # Inicia el flujo del juego directamente
+
 
 class main():
     while True:
+        # Muestra el menú principal y espera la elección del usuario para continuar
         mostrar_menu()
         opcion = input("Elija una opción: ")
 
@@ -56,8 +53,8 @@ class main():
                 print("Slot no válido.")
 
         elif opcion == "3":
-            # Mostrar historia poco a poco
-            escribir_poco_a_poco("Esta es la historia de Corona de Hielo...")
+            # Mostrar historia redireccionado al reposotorio donde se aloja
+            webbrowser.open("https://github.com/DaihoX/interactive-game/blob/main/historia.txt")
 
         elif opcion == "4":
             # Terminar ejecución del juego
@@ -65,4 +62,5 @@ class main():
             sys.exit()
 
         else:
+            # Cuando no se elige una opción válidam mostrar mensaje de error
             print("Opción no válida. Inténtelo de nuevo.")

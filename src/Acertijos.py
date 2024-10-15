@@ -58,11 +58,6 @@ class Acertijos:
     def iniciar_pregunta(self):
         fila, columna = self.Mapa.posicion_actual  # Obtiene la posición actual en el mapa
         pregunta = self.mostrar_pregunta(fila, columna)
-    
-    # Comprobar si la habitación ya está resuelta
-        if self.Mapa.habitaciones[fila][columna].resuelto:
-            print("¡Habitación ya resuelta! Ve a otra.")
-            return  # Salir del método si la habitación ya está resuelta
 
         if pregunta:
             print(f"Acertijo en habitación ({fila}, {columna}): {pregunta}")

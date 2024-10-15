@@ -2,6 +2,7 @@ from Mapa import Mapa
 from Acertijos import Acertijos
 from Partida import Partida
 
+
 class IniciarJuego:
     def __init__(self, mapa=None):
         if mapa is None:
