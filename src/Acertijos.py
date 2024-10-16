@@ -1,7 +1,8 @@
 import IniciarJuego
 
-
+# Creamos la clase acertijos la cual va contener los acertijos que se le presentarán al jugador y las interracciones de los mismos
 class Acertijos:
+    # Constructor de la clase
     def __init__(self, mapa):
 
         self.Mapa = mapa
@@ -28,6 +29,7 @@ class Acertijos:
             "Si un tren sale a las 3 p.m. y tarda 2 horas en llegar a su destino, ¿a qué hora llegará?": "5 pm"
         }
 
+    # Método para mostrar un acertijo basado en la fila y columna
     def mostrar_pregunta(self, fila, columna):
 
         # Dependiendo de la fila, mostramos un tipo de acertijo
@@ -51,6 +53,7 @@ class Acertijos:
 
             return None
 
+    # Método para validar la respuesta del jugador
     def validar_respuesta(self, fila, columna, respuesta_usuario):
 
         # Seleccionamos la categoría de acertijo basado en la fila
@@ -66,12 +69,16 @@ class Acertijos:
         else:
             return False
 
+        # Obtenemos el acertijo y la respuesta correcta
         pregunta = self.mostrar_pregunta(fila, columna)
         respuesta_correcta = respuestas.get(pregunta)
 
+        # Comparamos la respuesta del jugador con la respuesta correcta
         if respuesta_usuario.lower() == respuesta_correcta.lower():
 
             print("¡Respuesta correcta! Has ganado 5 puntos de vida, 2 de ataque y 2 de defensa.")
+
+            # Cada vez que el jugador responda un acertijo correctamente se le aumenten sus pintos de habilidad y muestre su aumento
 
             IniciarJuego.IniciarJuego.jugador.vida += 2
             IniciarJuego.IniciarJuego.jugador.fuerza += 2
@@ -81,21 +88,27 @@ class Acertijos:
                   " Fuerza: " + str(IniciarJuego.IniciarJuego.jugador.fuerza) +
                   " Defensa: " + str(IniciarJuego.IniciarJuego.jugador.defensa))
 
+            # Retorna True si la respuesta es correcta y desbloquea la siguiente habitación
             return True
 
         else:
             print("Respuesta incorrecta. Inténtalo de nuevo.")
+
+            # Retorna False si la respuesta es incorrecta
             return False
 
+    # Método para iniciar un acertijo
     def iniciar_pregunta(self):
 
         fila, columna = self.Mapa.posicion_actual  # Obtiene la posición actual en el mapa
-        pregunta = self.mostrar_pregunta(fila, columna)
+        pregunta = self.mostrar_pregunta(fila, columna) # Obtiene el acertijo en esa posición
 
-        if pregunta:
+        if pregunta: # Si hay un acertijo en esa posición
+            # Muestra el acertijo y espera la respuesta del jugador
             print(f"Acertijo en habitación ({fila}, {columna}): {pregunta}")
             respuesta_usuario = input("Tu respuesta: ")
 
+            # Valida la respuesta del jugador
             if self.validar_respuesta(fila, columna, respuesta_usuario):
                 print("Acertijo completado.\n")
 
@@ -103,7 +116,9 @@ class Acertijos:
                     return True  # Retornar True si todas están resueltas
 
             else:
+                # Si la respuesta es incorrecta, se le da otra oportunidad al jugador
                 print("Intenta de nuevo.\n")
 
         else:
+            # Si no hay acertijo en esa posición
             print("No hay acertijos para esta posición.")
