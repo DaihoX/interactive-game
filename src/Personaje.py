@@ -30,10 +30,13 @@ class Personaje:
         return self.fuerza - enemigo.defensa
 
     def atacar(self, enemigo):
+
         daño = self.daño(enemigo)
         enemigo.vida = enemigo.vida - daño
         print(self.nombre, "ha realizado", daño, "puntos de daño a", enemigo.nombre)
+
         if enemigo.esta_vivo():
             print("Vida de", enemigo.nombre, "es", enemigo.vida)
+
         else:
             enemigo.morir()
