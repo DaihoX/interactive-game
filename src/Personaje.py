@@ -1,5 +1,6 @@
 class Personaje:
 
+    # Creamos el constructor de la clase
     def __init__(self, nombre, fuerza, inteligencia, defensa, vida):
         self.nombre = nombre
         self.fuerza = fuerza

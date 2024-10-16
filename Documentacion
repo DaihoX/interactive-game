@@ -1,0 +1,15 @@
+Proyecto desarrolado por Juan Diego Orozco Meza y Jeison David Gomez Hernandez
+
+El proyecto se trata de una aventura de texto 3x3 en la cual debes resolver acertijos para poder
+vencer a un jefe final.
+
+Este fue desarrollado en el lenguaje de Python en su version 3.10.
+
+Requisitos minimos:
+-Tener Python 3.10(O susperior) instalado
+-Tener un IDE para realizar la ejecucion de el juego
+
+Como jugar:
+Cuando descargue la serie de archivos desde GitHub abra la carpeta desde su IDE con todos los
+archivos cargados, acto seguido configure el interper de su IDE en Python 3.10, despues
+dirijase al archivo main.py y ejecute el codigo.
