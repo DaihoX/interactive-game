@@ -50,16 +50,19 @@ class IniciarJuego:
                 if slot in ["1", "2", "3"]:
                     archivo_guardado = f"partida_slot_{slot}.pkl"
                     partida = Partida(archivo=archivo_guardado)
-                    partida.guardar(self.mapa)  # Guardamos el estado del mapa en el slot elegido
-                    print(f"Partida guardada en el slot {slot}") # Muestra el slot en el que guardamos la partida
+                    
+                    # Guardamos el estado del mapa y los acertijos en el slot elegido
+                    partida.guardar(self.mapa, self.Acertijos)
+                    print(f"Partida guardada en el slot {slot}")  # Muestra el slot en el que guardamos la partida
 
                 else:
                     print("Slot no válido. No se guardó la partida.")
 
+            # Opcion para pelear antes con el boss         
             elif accion == "pelear":
                 combate(IniciarJuego.jugador, IniciarJuego.jefeFinal)
                 break
-
+            # Muestra las estadisticas actuales del jugador 
             elif accion == "estadisticas":
                 print(" Vida: " + str(IniciarJuego.jugador.vida) +
                       " Fuerza: " + str(IniciarJuego.jugador.fuerza) +
